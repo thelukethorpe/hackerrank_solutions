@@ -15,18 +15,13 @@ public class Solution {
         if (n == 2) {
             /* Trivial check for the only even prime. */
             return isPrime;
-        } else if (n < 2) {
-            /* Primes cannot be 1 or smaller. */
+        } else if (n < 2 || (n & 1) == 0) {
+            /* Primes cannot be even or less than 2. */
             return isNotPrime;
         } else {
-            /* Trivial even check. */
-            if ((n & 1) == 0) {
-                return isNotPrime;
-            }
-
+            /* Assertion: square = factor * factor */
             int factor = 3;
             int square = 9;
-            /* Assertion: square = factor * factor */
             /* Walks over odd factors up to square root
                of the given value. */
             while (square <= n) {
